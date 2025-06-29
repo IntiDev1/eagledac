@@ -1,10 +1,11 @@
-import { Box, Heading } from "@chakra-ui/react";
-
 function DacCreatorPage() {
   return (
-    <Box p={6}>
-      <Heading size="lg">🛠️ Create a New DAC</Heading>
-    </Box>
+    <div className="page-container">
+      <h1 className="page-title">🛠️ DAC Creator</h1>
+      <p className="page-description">
+        Start building your own DAC with AI assistance.
+      </p>
+    </div>
   );
 }
 

@@ -1,10 +1,11 @@
-import { Box, Heading } from "@chakra-ui/react";
-
 function DacPanelPage() {
   return (
-    <Box p={6}>
-      <Heading size="lg">📦 Interact with Deployed DAC</Heading>
-    </Box>
+    <div className="page-container">
+      <h1 className="page-title">📦 DAC Panel</h1>
+      <p className="page-description">
+        Interact with your deployed DAC contracts from here.
+      </p>
+    </div>
   );
 }
 

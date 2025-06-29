@@ -1,52 +1,30 @@
-import { Box, VStack, Link } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
+import "../styles/sidebar.scss";
 
 const Sidebar = () => {
   return (
-    <Box
-      w="220px"
-      bg="gray.800"
-      color="white"
-      minH="100vh"
-      position="fixed"
-      p={4}
-    >
-      <VStack align="start" gap={4}>
-        <NavLink to="/audit">
-          {({ isActive }) => (
-            <Box
-              as="span"
-              color={isActive ? "teal.300" : "white"}
-              _hover={{ color: "teal.300" }}
-            >
-              🛡️ EagleAudit
-            </Box>
-          )}
+    <aside className="sidebar">
+      <nav className="sidebar__nav">
+        <NavLink
+          to="/audit"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          🛡️ EagleAudit
         </NavLink>
-        <NavLink to="/creator">
-          {({ isActive }) => (
-            <Box
-              as="span"
-              color={isActive ? "teal.300" : "white"}
-              _hover={{ color: "teal.300" }}
-            >
-              🛠️ DAC Creator
-            </Box>
-          )}
+        <NavLink
+          to="/creator"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          🛠️ DAC Creator
         </NavLink>
-        <NavLink to="/deploy">
-          {({ isActive }) => (
-            <Box
-              as="span"
-              color={isActive ? "teal.300" : "white"}
-              _hover={{ color: "teal.300" }}
-            >
-              📦 DAC Panel
-            </Box>
-          )}
+        <NavLink
+          to="/deploy"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          📦 DAC Panel
         </NavLink>
-      </VStack>
-    </Box>
+      </nav>
+    </aside>
   );
 };
 

@@ -1,10 +1,8 @@
-import { Box, Heading } from "@chakra-ui/react";
-
 function AuditPanelPage() {
   return (
-    <Box p={6}>
-      <Heading size="lg">🔍 Audit Smart Contracts</Heading>
-    </Box>
+    <div className="page-container">
+      <h1 className="page-title">🔍 Audit Smart Contracts</h1>
+    </div>
   );
 }
 
