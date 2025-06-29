@@ -1,13 +1,11 @@
-import DacForm from "../components/DacForm";
+// src/pages/DacCreatorPage.tsx
+import ContractForm from "../components/ContractForm"; // 👈 Importamos nuevo componente
 
 function DacCreatorPage() {
   return (
-    <div className="page-container">
-      <h1 className="page-title">🛠️ DAC Creator</h1>
-      <p className="page-description">
-        Start building your own DAC with AI assistance.
-      </p>
-      <DacForm />
+    <div className="dac-creator-page">
+      <h2>🛠️ DAC Creator</h2>
+      <ContractForm /> {/* 👈 Usamos el componente */}
     </div>
   );
 }
