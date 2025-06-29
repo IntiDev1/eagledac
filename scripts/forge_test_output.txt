@@ -1,0 +1,22 @@
+Compiler run failed:
+Error (6275): Source "forge-std/Script.sol" not found: File not found. Searched the following locations: "/Users/andes/Documents/Project-Web3/eagledac".
+ParserError: Source "forge-std/Script.sol" not found: File not found. Searched the following locations: "/Users/andes/Documents/Project-Web3/eagledac".
+ --> contracts/script/Counter.s.sol:4:1:
+  |
+4 | import {Script, console} from "forge-std/Script.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (6275): Source "forge-std/Test.sol" not found: File not found. Searched the following locations: "/Users/andes/Documents/Project-Web3/eagledac".
+ParserError: Source "forge-std/Test.sol" not found: File not found. Searched the following locations: "/Users/andes/Documents/Project-Web3/eagledac".
+ --> contracts/test/Counter.t.sol:4:1:
+  |
+4 | import {Test, console} from "forge-std/Test.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (6275): Source "forge-std/Test.sol" not found: File not found. Searched the following locations: "/Users/andes/Documents/Project-Web3/eagledac".
+ParserError: Source "forge-std/Test.sol" not found: File not found. Searched the following locations: "/Users/andes/Documents/Project-Web3/eagledac".
+ --> contracts/test/SimpleVault.t.sol:4:1:
+  |
+4 | import "forge-std/Test.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
