@@ -1,3 +1,5 @@
+import DacForm from "../components/DacForm";
+
 function DacCreatorPage() {
   return (
     <div className="page-container">
@@ -5,6 +7,7 @@ function DacCreatorPage() {
       <p className="page-description">
         Start building your own DAC with AI assistance.
       </p>
+      <DacForm />
     </div>
   );
 }
