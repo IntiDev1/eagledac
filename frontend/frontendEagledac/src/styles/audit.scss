@@ -1,0 +1,50 @@
+.audit-panel {
+    padding: 2rem;
+    color: #f0f0f0;
+    background: linear-gradient(120deg, #111827 0%, #1f2937 100%);
+    min-height: 100vh;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #38bdf8;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      color: #facc15;
+    }
+
+    .error {
+      color: #f87171;
+      font-weight: bold;
+    }
+
+    .audit-results {
+      margin-top: 1rem;
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          background-color: rgba(255, 255, 255, 0.05);
+          margin-bottom: 1rem;
+          padding: 1rem;
+          border-left: 4px solid #facc15;
+          border-radius: 6px;
+
+          strong {
+            color: #93c5fd;
+          }
+
+          em {
+            display: block;
+            margin-top: 0.5rem;
+            color: #9ca3af;
+          }
+        }
+      }
+    }
+}

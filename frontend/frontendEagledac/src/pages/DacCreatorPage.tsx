@@ -5,7 +5,7 @@ function DacCreatorPage() {
   return (
     <div className="dac-creator-page">
       <h2>🛠️ DAC Creator</h2>
-      <ContractForm /> {/* 👈 Usamos el componente */}
+      <ContractForm /> {/* Usamos el componente */}
     </div>
   );
 }

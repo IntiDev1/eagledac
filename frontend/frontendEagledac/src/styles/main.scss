@@ -1,6 +1,8 @@
-@import "./sidebar.scss";
-@import "./app.scss";
-@import "./creator.scss";
+@use "./sidebar.scss";
+@use "./app.scss";
+@use "./creator.scss";
+@use "./audit.scss";
+
 /* @import otras si agregas más */
 
 // Estilos base y globales
