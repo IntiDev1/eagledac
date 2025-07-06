@@ -1,35 +1,54 @@
+[![MVP Status](https://img.shields.io/badge/MVP-In--Progress-brightgreen)](https://github.com/IntiDev1/eagledac)
+
 # 🦅 EagleDAC
 
-**EagleDAC** enables smart contract generation and automatic security auditing with AI integration.  
-This MVP is built for the **HyperHack 2025** and serves as a next-generation tool for launching decentralized autonomous companies (DACs) in a secure, auditable, and intelligent way.
+> AI-Powered DAC Generator & Real-Time Smart Contract Auditor on Metis
 
----
+EagleDAC es una plataforma modular que permite crear DACs (Decentralized Autonomous Companies) inteligentes, seguras y auditadas, utilizando IA para generación automática de contratos en Solidity y auditoría en tiempo real.
 
-## 📦 Tech Stack
+## 🚀 ¿Qué hace?
 
-| Component       | Technology           | Purpose                                        |
-| --------------- | -------------------- | ---------------------------------------------- |
-| Smart Contracts | 🦅 Foundry           | Blazing fast development & testing             |
-| Frontend        | ⚛️ React + Vite      | Instant load, ideal for modern dApps           |
-| Backend API     | 🧠 Node.js + Express | Handles AI requests and Python analysis bridge |
-| AI Engine       | 🐍 Python (venv)     | Runs Solidity audits with simple ML logic      |
+1. **Generación AI de contratos:** escribe el propósito de tu organización y EagleDAC genera un contrato personalizado en Solidity.
+2. **Auditoría en tiempo real:** el contrato generado se audita con IA + Slither, mostrando vulnerabilidades y recomendaciones.
+3. **Despliegue directo a blockchain:** desplega tu DAC en Metis desde el frontend usando wallet.
+4. **Gamificación:** valida auditorías, corrige vulnerabilidades y sube de nivel en la comunidad.
 
----
+## 🧱 Stack Tecnológico
 
-## 🚀 Features
+- Frontend: React + Sass + Vite + wagmi + viem
+- Backend: Node.js + Express + Python + Foundry + Slither
+- Smart Contracts: Solidity
+- Chain: Metis Andromeda
+- LLMs: integración futura con Alith (Hyperion AI agents)
 
-- ✅ Generate DACs from visual interface
-- 🔍 AI-powered smart contract security audit (Reentrancy detection)
-- 💼 Wallet integration for interacting with deployed contracts
-- 📁 Real-time contract feedback (ETH balance, deposits, withdrawals)
+## 🔥 MVP Status (Julio 2025)
 
----
+✅ DAC Generator funcionando  
+✅ AI audit con Slither  
+✅ UI con modo oscuro/claro  
+✅ Deploy interactivo con wallet (en progreso)  
+✅ Estructura backend conectada  
+🚧 Alith + módulos de gobernanza en desarrollo
 
-## 🛠️ Getting Started
-
-### 1. Clone the repository
+## 🧪 Cómo correr localmente
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/EagleDAC.git
-cd EagleDAC
+# Clona el repo
+git clone https://github.com/IntiDev1/eagledac
+cd eagledac
+
+# Instalación FRONTEND
+cd frontend
+npm install
+npm run dev
+
+# Instalación BACKEND
+cd ../backend
+npm install
+cp .env.example .env   # Añade tus claves RPC y PRIVATE_KEY
+node server.js         # O usa nodemon
+
+# Audit Slither
+cd scripts
+./run_audit.sh         # Genera output JSON desde Slither
 ```

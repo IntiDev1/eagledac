@@ -47,20 +47,24 @@ function AuditPanelPage() {
       {loading && <p>Loading audit report...</p>}
       {error && <p className="error">{error}</p>}
 
-      {report && (
+      {report && report.issues && Array.isArray(report.issues) && (
         <div className="audit-results">
           <h2>{report.summary}</h2>
-          <ul>
-            {report.issues.map((issue, index) => (
-              <li key={index}>
-                <strong>{issue.check}</strong> ({issue.impact},{" "}
-                {issue.confidence})<br />
-                {issue.description}
-                <br />
-                <em>Location: {issue.location.join(", ")}</em>
-              </li>
-            ))}
-          </ul>
+          {report.issues.length === 0 ? (
+            <p>No issues found! ✅</p>
+          ) : (
+            <ul>
+              {report.issues.map((issue, index) => (
+                <li key={index}>
+                  <strong>{issue.check}</strong> ({issue.impact},{" "}
+                  {issue.confidence})<br />
+                  {issue.description}
+                  <br />
+                  <em>Location: {issue.location.join(", ")}</em>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
     </div>

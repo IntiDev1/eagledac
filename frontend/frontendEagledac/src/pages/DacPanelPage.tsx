@@ -1,10 +1,14 @@
+// frontend/src/pages/DacPanelPage.tsx
+
+import DeployConsole from "../components/DeployConsole";
+import ContractPreview from "../components/ContractPreview";
+
 function DacPanelPage() {
   return (
-    <div className="page-container">
-      <h1 className="page-title">📦 DAC Panel</h1>
-      <p className="page-description">
-        Interact with your deployed DAC contracts from here.
-      </p>
+    <div className="dac-panel">
+      <h1>🎯 DAC Deployment Panel</h1>
+      <ContractPreview />
+      <DeployConsole />
     </div>
   );
 }

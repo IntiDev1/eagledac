@@ -1,3 +1,5 @@
+// backend/server.js
+require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
@@ -25,6 +27,12 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
 
+// Rutas de la API
 const generateRoute = require("./routes/api/ai/generate");
 app.use("/api/ai/generate", generateRoute);
+
+// Ruta de deploy
+const deployRoute = require("./routes/api/deploy");
+app.use("/api/deploy", deployRoute);
+
 

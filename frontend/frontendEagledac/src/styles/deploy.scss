@@ -1,0 +1,68 @@
+// styles/deploy.scss
+.deploy-console {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    color: #f0f0f0;
+
+    h2 {
+      color: #38bdf8;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background: #38b2ac;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+  
+      &:hover {
+        background: #319795;
+      }
+  
+      &:disabled {
+        background: #555;
+        cursor: not-allowed;
+      }
+    }
+  
+    .console-output {
+      background: #111;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      max-height: 300px;
+      overflow-y: auto;
+
+      pre {
+        margin: 0;
+      }
+
+      .success {
+        margin-top: 1rem;
+        color: #66ff99;
+      }
+    }
+
+    .terminal-output {
+        background-color: #111;
+        padding: 1rem;
+        border-radius: 6px;
+        white-space: pre-wrap;
+        font-family: 'Fira Code', monospace;
+        border: 1px solid #444;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+    .error {
+        color: #f87171;
+        font-weight: bold;
+    }
+}
