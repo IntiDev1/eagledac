@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-/// @title contract
+/// @title test
 /// @notice Auto-generated DAC smart contract
-/// @dev Purpose: contract
+/// @dev Purpose: dashboard
 
-contract contract {
-    string public purpose = "contract";
+contract test {
+    string public purpose = "dashboard";
 }

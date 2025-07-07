@@ -1,0 +1,52 @@
+// styles/dashboard.scss
+
+.dashboard {
+    padding: 3rem;
+    text-align: center;
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+        color: var(--text-color);
+        margin-bottom: 2rem;
+    }
+
+    .card-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .card {
+        background-color: var(--bg-color);
+        border: 2px solid var(--accent-color);
+        color: var(--text-color);
+        padding: 2rem;
+        width: 280px;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: left;
+        text-decoration: none;
+
+        h2 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        p {
+            color: var(--text-color);
+        }
+
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+    }
+}

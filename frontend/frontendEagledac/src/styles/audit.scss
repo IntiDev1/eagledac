@@ -1,7 +1,9 @@
+// frontend/src/styles/audit.scss
+
 .audit-panel {
     padding: 2rem;
-    color: #f0f0f0;
-    background: linear-gradient(120deg, #111827 0%, #1f2937 100%);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     min-height: 100vh;
 
     h1 {
@@ -17,8 +19,12 @@
     }
 
     .error {
-      color: #f87171;
+      color: var(--error-color);
       font-weight: bold;
+      background-color: var(--error-bg);
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
     }
 
     .audit-results {
@@ -29,22 +35,41 @@
         padding: 0;
 
         li {
-          background-color: rgba(255, 255, 255, 0.05);
+          background-color: var(--card-color);
           margin-bottom: 1rem;
           padding: 1rem;
-          border-left: 4px solid #facc15;
+          border-left: 4px solid var(--accent-color);
           border-radius: 6px;
 
           strong {
-            color: #93c5fd;
+            color: var(--accent-color);
           }
 
           em {
             display: block;
             margin-top: 0.5rem;
-            color: #9ca3af;
+            color: var(--text-color);
           }
         }
+      }
+    }
+
+    .audit-button {
+      background: var(--accent-color);
+      color: white;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #319795; // tono más oscuro de teal
+      }
+
+      &:disabled {
+        background: #aaa;
+        cursor: not-allowed;
       }
     }
 }

@@ -1,0 +1,37 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #121212;
+    --accent-color: #38b2ac;
+    --card-bg: #f9f9f9;
+    --input-bg: #ffffff;
+    --border-color: #ccc;
+    --code-bg: #f0f0f0;
+    --text-subtle: #555;
+    --error-color: #ff4d4f;
+    --error-bg: rgba(255, 77, 79, 0.1);
+    --preview-bg: #f4f4f4;
+    --preview-text: #1a1a1a;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --accent-color: #38b2ac;
+    --card-bg: #1e1e1e;
+    --input-bg: #222222;
+    --border-color: #444;
+    --code-bg: #1c1c1c;
+    --text-subtle: #9ca3af;
+    --error-color: #ff6b6b;
+    --error-bg: rgba(255, 107, 107, 0.1);
+    --preview-bg: #1c1c1c;
+    --preview-text: #eaeaea;
+}
+
+[data-theme="light"] {
+    --accent-color: #0d9488; // un tono más profundo para contraste
+    --error-color: #d32f2f;
+    --error-bg: rgba(211, 47, 47, 0.08);
+    --preview-bg: #f9f9f9;
+    --preview-text: #111111;
+}

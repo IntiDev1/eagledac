@@ -1,6 +1,8 @@
+// frontend/src/styles/app.scss
+
 .page-container {
     padding: 2rem;
-    color: white;
+    color: var(--text-color);
 }
 
 .page-title {
@@ -11,14 +13,14 @@
 
 .page-description {
     font-size: 1.1rem;
-    color: #ccc;
+    color: var(--text-color);
 }
 
 .main-content {
     margin-left: 220px;
     padding: 2rem;
     width: 100%;
-    background-color: #121212;
+    background-color: var(--bg-color);
     min-height: 100vh;
-    color: white;
+    color: var(--text-color);
 }

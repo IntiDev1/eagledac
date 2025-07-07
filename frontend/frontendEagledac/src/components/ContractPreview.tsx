@@ -1,23 +1,27 @@
-// src/components/ContractPreview.tsx
+// frontendEagledac/src/components/ContractPreview.tsx
+
 import { useEffect, useState } from "react";
 import "../styles/preview.scss";
 
 function ContractPreview() {
-  const [code, setCode] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [contractCode, setContractCode] = useState<string | null>(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true); // ⏳ loading state
 
   useEffect(() => {
     const fetchContract = async () => {
       try {
         const res = await fetch("http://localhost:3001/api/ai/contract");
         const data = await res.json();
-        if (data.code) setCode(data.code);
-        else throw new Error("No contract code found.");
-      } catch (err) {
-        setError("❌ Error loading contract.");
+        if (data.code) {
+          setContractCode(data.code);
+        } else {
+          setError("Error loading contract.");
+        }
+      } catch {
+        setError("Error fetching contract from server.");
       } finally {
-        setLoading(false);
+        setLoading(false); // ✅ stop loading
       }
     };
 
@@ -26,10 +30,13 @@ function ContractPreview() {
 
   return (
     <div className="contract-preview">
-      <h3>📄 Generated Contract Preview</h3>
-      {loading && <p>Loading contract...</p>}
-      {error && <p className="error">{error}</p>}
-      {!loading && !error && <pre className="contract-content">{code}</pre>}
+      <h3>📄 Generated Contract</h3>
+
+      {loading && <div className="spinner" />}
+      {error && !loading && <p className="error">{error}</p>}
+      {contractCode && !loading && (
+        <pre className="contract-content">{contractCode}</pre>
+      )}
     </div>
   );
 }
