@@ -28,7 +28,7 @@ function AuditPanelPage() {
   useEffect(() => {
     const fetchAudit = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/ai/audit");
+        const res = await fetch("http://localhost:3001/api/ai/audit/report");
         const data = await res.json();
         setReport(data);
       } catch {
@@ -52,7 +52,7 @@ function AuditPanelPage() {
           setRunning(true);
           try {
             const res = await fetch("http://localhost:3001/api/ai/run-audit", {
-              method: "POST",
+              method: "GET",
             });
             const data = await res.json();
             if (data.success) {

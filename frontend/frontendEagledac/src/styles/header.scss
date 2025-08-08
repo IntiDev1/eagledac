@@ -1,0 +1,93 @@
+// frontendEagledac/src/styles/header.scss
+
+@use "./variables" as *; // Importa todas las variables
+
+.header {
+  position: fixed;
+  top: 0;
+  left: $sidebar-width;
+  right: 0;
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 100;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .branding {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    
+    .logo {
+      height: 36px;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    
+    .title {
+      font-size: 1.4rem;
+      background: linear-gradient(90deg, $primary, $accent);
+      -webkit-background-clip: text;
+      background-clip: text; // Propiedad estándar
+      -webkit-text-fill-color: transparent;
+      color: transparent; // Soporte para navegadores modernos
+      
+      // Fallback para navegadores que no soportan background-clip
+      @supports not (background-clip: text) {
+        color: $primary;
+        background: none;
+      }
+    }
+  }
+
+  .theme-switcher {
+    background: var(--bg-secondary);
+    color: var(--text-color);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    
+    &:hover {
+      background: var(--hover-bg);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .header {
+    left: 0;
+    
+    .branding .title {
+      display: none;
+    }
+  }
+}

@@ -4,3 +4,10 @@ out = "out"
 libs = ["lib"]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
+[rpc_endpoints]
+metis = "https://andromeda.metis.io/?owner=1088"
+
+[profile.default]
+chain_id = 1088
+eth_rpc_url = "https://andromeda.metis.io/?owner=1088"

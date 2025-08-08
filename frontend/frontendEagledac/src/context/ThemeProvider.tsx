@@ -1,15 +1,33 @@
-// frontend/src/context/ThemeProvider.tsx
+// frontendEagledac/src/context/ThemeProvider.tsx
 
 import { useState, useEffect } from "react";
-import { ThemeContext } from "./ThemeContext";
+import { ThemeContext, type Theme } from "./ThemeContext";
 import type { ThemeContextType } from "./ThemeContext";
 import type { ReactNode } from "react";
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+type ThemeProviderProps = {
+  children: ReactNode;
+  initialTheme: Theme;
+};
+
+export const ThemeProvider = ({
+  children,
+  initialTheme,
+}: ThemeProviderProps) => {
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+
+    // Actualizar theme-color meta tag
+    const metaTheme = document.querySelector("meta[name='theme-color']");
+    if (metaTheme) {
+      metaTheme.setAttribute(
+        "content",
+        theme === "dark" ? "#121826" : "#ffffff"
+      );
+    }
   }, [theme]);
 
   const toggleTheme = () => {

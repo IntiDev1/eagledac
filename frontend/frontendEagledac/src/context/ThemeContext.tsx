@@ -1,14 +1,15 @@
-// frontend/src/context/ThemeContext.tsx
+// frontendEagledac/src/context/ThemeContext.tsx
 
 import { createContext } from "react";
 
-// Define el tipo de contexto
+export type Theme = "light" | "dark";
+
 export type ThemeContextType = {
-  theme: "light" | "dark";
+  theme: Theme;
   toggleTheme: () => void;
 };
 
-// Crea el contexto con valor inicial undefined
-export const ThemeContext = createContext<ThemeContextType | undefined>(
-  undefined
-);
+export const ThemeContext = createContext<ThemeContextType>({
+  theme: "dark",
+  toggleTheme: () => {},
+});

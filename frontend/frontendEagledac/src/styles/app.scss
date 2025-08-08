@@ -1,26 +1,86 @@
-// frontend/src/styles/app.scss
+// frontendEagledac/src/styles/app.scss
 
-.page-container {
-    padding: 2rem;
-    color: var(--text-color);
+@use "./variables" as *;
+
+.main-content {
+  flex: 1;
+  margin-left: $sidebar-width;
+  
+  // Usando calc() para combinar unidades
+  padding-top: calc(#{$header-height} + 2rem);
+  padding-bottom: 2rem;
+  transition: margin-left 0.3s ease;
+}
+
+.page-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
 }
 
 .page-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  
+  svg {
+    color: var(--accent-color);
+  }
 }
 
 .page-description {
-    font-size: 1.1rem;
-    color: var(--text-color);
+  font-size: 1.1rem;
+  color: var(--text-subtle);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  line-height: 1.7;
 }
 
-.main-content {
-    margin-left: 220px;
-    padding: 2rem;
-    width: 100%;
-    background-color: var(--bg-color);
-    min-height: 100vh;
-    color: var(--text-color);
+// Card styles
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: calc(#{$header-height} + 1rem);
+  }
+  
+  .page-content {
+    padding: 0 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 1.75rem;
+  }
 }

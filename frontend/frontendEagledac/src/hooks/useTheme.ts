@@ -1,4 +1,4 @@
-// frontend/src/hooks/useTheme.ts
+// frontendEagledac/src/hooks/useTheme.ts
 
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";

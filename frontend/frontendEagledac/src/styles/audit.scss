@@ -1,4 +1,5 @@
-// frontend/src/styles/audit.scss
+// frontendEagledac/src/styles/audit.scss
+@use "./variables" as *;
 
 .audit-panel {
     padding: 2rem;
@@ -40,6 +41,7 @@
           padding: 1rem;
           border-left: 4px solid var(--accent-color);
           border-radius: 6px;
+          border: 1px solid var(--border-color);
 
           strong {
             color: var(--accent-color);

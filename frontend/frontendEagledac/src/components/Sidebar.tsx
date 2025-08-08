@@ -1,31 +1,87 @@
+// frontendEagledac/src/components/Sidebar.tsx
 import { NavLink } from "react-router-dom";
-import "../styles/sidebar.scss";
+import { useTheme } from "../context/useTheme";
+import {
+  FiActivity,
+  FiFileText,
+  FiCode,
+  FiUploadCloud,
+  FiHelpCircle,
+} from "react-icons/fi";
 
-const Sidebar = () => {
+type SidebarProps = {
+  open: boolean;
+};
+
+function Sidebar({ open }: SidebarProps) {
+  const { theme } = useTheme();
+
+  const sidebarLinks = [
+    {
+      path: "/audit",
+      label: "Audit",
+      icon: <FiActivity />,
+    },
+    {
+      path: "/creator",
+      label: "DAC Creator",
+      icon: <FiCode />,
+    },
+    {
+      path: "/deploy",
+      label: "Deploy",
+      icon: <FiUploadCloud />,
+    },
+    {
+      path: "/docs",
+      label: "Documentation",
+      icon: <FiFileText />,
+    },
+  ];
+
   return (
-    <aside className="sidebar">
-      <nav className="sidebar__nav">
-        <NavLink
-          to="/audit"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          🛡️ EagleAudit
-        </NavLink>
-        <NavLink
-          to="/creator"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          🛠️ DAC Creator
-        </NavLink>
-        <NavLink
-          to="/deploy"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          📦 DAC Panel
-        </NavLink>
+    <aside className={`sidebar ${open ? "open" : ""}`}>
+      <div className="sidebar-logo">
+        <FiCode size={24} />
+        <span>EagleDAC</span>
+      </div>
+
+      <nav>
+        <ul>
+          {sidebarLinks.map((link) => (
+            <li key={link.path}>
+              <NavLink
+                to={link.path}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                {link.icon}
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+        <div className="divider" />
+
+        <ul>
+          <li>
+            <NavLink
+              to="/help"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              <FiHelpCircle />
+              Help & Support
+            </NavLink>
+          </li>
+        </ul>
       </nav>
+
+      <div className="theme-info">
+        <p>Current theme: {theme === "dark" ? "Dark" : "Light"}</p>
+        <p>v1.0.0</p>
+      </div>
     </aside>
   );
-};
+}
 
 export default Sidebar;

@@ -1,22 +1,96 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/vite.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="EagleDAC - Generate and Audit Smart Contracts with AI" />
-    <title>EagleDAC - Web3 Tools</title>
+    <meta name="description" content="EagleDAC - Generate, Audit, and Deploy Smart Contracts with AI-powered tools for Web3" />
+    <meta name="theme-color" content="#121826" id="theme-color-meta">
+    <title>EagleDAC - Web3 Development Tools</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/eagle-logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Preload de fuentes para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload de estilos críticos -->
+    <!-- <link rel="preload" href="/src/styles/main.scss" as="style"> -->
+    
+    <!-- Estilos iniciales para evitar FOUC (Flash of Unstyled Content) -->
     <style>
+      :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+      }
+      
       body {
         margin: 0;
-        font-family: "Inter", sans-serif;
-        background-color: #0f0f0f;
-        color: #ffffff;
+        padding: 0;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        min-height: 100vh;
+        overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      #root {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+      
+      .eagle-logo-loading {
+        width: 80px;
+        height: 80px;
+        animation: pulse 1.5s infinite;
+      }
+      
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.7; }
+        50% { transform: scale(1.1); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.7; }
       }
     </style>
   </head>
   <body>
+    <!-- Overlay de carga inicial -->
+    <div class="loading-overlay" id="loading-overlay">
+      <img src="/eagle-logo.svg" alt="EagleDAC Loading" class="eagle-logo-loading">
+    </div>
+    
     <div id="root"></div>
+    
     <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // Eliminar overlay de carga cuando la app esté lista
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const overlay = document.getElementById('loading-overlay');
+          if (overlay) {
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.remove(), 500);
+          }
+        }, 1000);
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,115 @@
+// src/styles/footer.scss
+.footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    color: var(--text-subtle);
+    font-size: 0.9rem;
+    z-index: 99;
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+    
+    .footer-brand {
+      .footer-logo {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 0.3rem;
+      }
+      
+      .footer-tagline {
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 1.2rem;
+      
+      .social-icon {
+        font-size: 1.3rem;
+        color: var(--text-subtle);
+        transition: all 0.2s ease;
+        
+        &:hover {
+          color: var(--accent-color);
+          transform: translateY(-2px);
+        }
+      }
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      
+      a {
+        color: var(--text-subtle);
+        transition: color 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.9rem;
+        
+        &:hover {
+          color: var(--accent-color);
+        }
+        
+        .link-icon {
+          font-size: 1rem;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+    }
+    
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      
+      .footer-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        
+        .theme-indicator {
+          font-size: 1.1rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+}

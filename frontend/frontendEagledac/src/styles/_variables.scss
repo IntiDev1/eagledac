@@ -1,37 +1,63 @@
+// src/styles/_variables.scss
+// Color system
+$primary: #4361ee;
+$secondary: #3f37c9;
+$accent: #4895ef;
+$success: #4cc9f0;
+$danger: #f72585;
+$warning: #f8961e;
+$dark: #212529;
+$light: #f8f9fa;
+
+// Layout
+$header-height: 64px;
+$sidebar-width: 240px;
+$footer-height: 64px;
+
 :root {
-    --bg-color: #ffffff;
-    --text-color: #121212;
-    --accent-color: #38b2ac;
-    --card-bg: #f9f9f9;
-    --input-bg: #ffffff;
-    --border-color: #ccc;
-    --code-bg: #f0f0f0;
-    --text-subtle: #555;
-    --error-color: #ff4d4f;
-    --error-bg: rgba(255, 77, 79, 0.1);
-    --preview-bg: #f4f4f4;
-    --preview-text: #1a1a1a;
+  // Light theme
+  --bg-color: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --text-color: #121212;
+  --text-subtle: #555;
+  --accent-color: #{$primary};
+  --accent-hover: #{lighten($primary, 10%)};
+  --border-color: #e1e4e8;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --code-bg: #f0f0f0;
+  --preview-bg: #f7f7f7;
+  --preview-text: #121212;
+  --card-color: #ffffff;
+  --error-color: #ff4d4f;
+  --error-bg: rgba(255, 77, 79, 0.1);
+  --sidebar-bg: #ffffff;
+  --header-bg: #ffffff;
+  --hover-bg: rgba(67, 97, 238, 0.05);
+  --active-bg: rgba(67, 97, 238, 0.1);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="dark"] {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --accent-color: #38b2ac;
-    --card-bg: #1e1e1e;
-    --input-bg: #222222;
-    --border-color: #444;
-    --code-bg: #1c1c1c;
-    --text-subtle: #9ca3af;
-    --error-color: #ff6b6b;
-    --error-bg: rgba(255, 107, 107, 0.1);
-    --preview-bg: #1c1c1c;
-    --preview-text: #eaeaea;
-}
-
-[data-theme="light"] {
-    --accent-color: #0d9488; // un tono más profundo para contraste
-    --error-color: #d32f2f;
-    --error-bg: rgba(211, 47, 47, 0.08);
-    --preview-bg: #f9f9f9;
-    --preview-text: #111111;
+  // Dark theme
+  --bg-color: #121826;
+  --bg-secondary: #1c2438;
+  --text-color: #f0f0f0;
+  --text-subtle: #9ca3af;
+  --accent-color: #{$accent};
+  --accent-hover: #{lighten($accent, 10%)};
+  --border-color: #2d3748;
+  --card-bg: #1e293b;
+  --input-bg: #1e293b;
+  --code-bg: #1c1c1c;
+  --preview-bg: #1e293b;
+  --preview-text: #f0f0f0;
+  --card-color: #1e293b;
+  --error-color: #ff6b6b;
+  --error-bg: rgba(255, 107, 107, 0.1);
+  --sidebar-bg: #0f172a;
+  --header-bg: #0f172a;
+  --hover-bg: rgba(72, 149, 239, 0.1);
+  --active-bg: rgba(72, 149, 239, 0.2);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }

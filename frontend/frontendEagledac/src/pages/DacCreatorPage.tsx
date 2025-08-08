@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "../styles/creator.scss";
+import { Agent } from "alith";
 
 function DacCreatorPage() {
   const [name, setName] = useState("");
@@ -23,8 +24,8 @@ function DacCreatorPage() {
 
       const data = await res.json();
 
-      if (data.code) {
-        setCode(data.code);
+      if (data.contractCode) {
+        setCode(data.contractCode);
       } else {
         setError("Error generating contract");
       }
@@ -34,6 +35,13 @@ function DacCreatorPage() {
       setLoading(false);
     }
   };
+
+  const agent = new Agent({
+    model: "gpt-4",
+    preamble: "Generate a Solidity contract based on the user's description",
+  });
+
+  const contract = await agent.prompt("Create a voting DAO with 3 proposals");
 
   return (
     <div className="contract-form">

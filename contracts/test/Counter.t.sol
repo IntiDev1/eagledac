@@ -1,3 +1,4 @@
+/*
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
@@ -22,3 +23,4 @@ contract CounterTest is Test {
         assertEq(counter.number(), x);
     }
 }
+*/

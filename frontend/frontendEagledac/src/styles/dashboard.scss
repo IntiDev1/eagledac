@@ -1,4 +1,5 @@
-// styles/dashboard.scss
+// src/styles/dashboard.scss
+@use "./variables" as *;
 
 .dashboard {
     padding: 3rem;
@@ -49,4 +50,38 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
     }
+
+    @media (max-width: 576px) {
+        .card-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+    }
 }
+
+// frontendEagledac/src/styles/dashboard.scss
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .card-stats {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+    border-radius: var(--radius);
+  }
+  

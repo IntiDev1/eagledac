@@ -25,7 +25,7 @@ function ContractForm() {
 
       const data = await res.json();
       setGeneratedCode(data.code || "No code returned.");
-    } catch (err: any) {
+    } catch (err) {
       setError("Error generating contract.");
       console.error(err);
     } finally {

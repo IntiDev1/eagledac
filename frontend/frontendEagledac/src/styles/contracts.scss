@@ -1,0 +1,29 @@
+// frontendEagledac/src/styles/contracts.scss
+.contracts-panel {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+    }
+  
+    ul {
+      list-style: none;
+      padding-left: 0;
+  
+      li {
+        margin-bottom: 0.75rem;
+        font-family: monospace;
+  
+        a {
+          color: var(--accent-color);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
