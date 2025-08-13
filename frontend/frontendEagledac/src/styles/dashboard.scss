@@ -85,3 +85,10 @@
     border-radius: var(--radius);
   }
   
+  .dashboard-hero {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    .hero-logo { height: 28px; width: auto; }
+  }
+  

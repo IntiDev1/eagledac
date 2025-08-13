@@ -1,5 +1,8 @@
 // src/styles/_variables.scss
 // Color system
+@use "sass:color";
+
+
 $primary: #4361ee;
 $secondary: #3f37c9;
 $accent: #4895ef;
@@ -16,6 +19,7 @@ $footer-height: 64px;
 
 :root {
   // Light theme
+  --sidebar-width: 240px;
   --bg-color: #ffffff;
   --bg-secondary: #f5f7fa;
   --text-color: #121212;
@@ -45,7 +49,7 @@ $footer-height: 64px;
   --text-color: #f0f0f0;
   --text-subtle: #9ca3af;
   --accent-color: #{$accent};
-  --accent-hover: #{lighten($accent, 10%)};
+  --accent-hover: #{color.scale($primary, $lightness: 10%)};
   --border-color: #2d3748;
   --card-bg: #1e293b;
   --input-bg: #1e293b;

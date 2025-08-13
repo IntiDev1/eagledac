@@ -4,51 +4,106 @@
 
 > AI-Powered DAC Generator & Real-Time Smart Contract Auditor on Metis
 
-EagleDAC es una plataforma modular que permite crear DACs (Decentralized Autonomous Companies) inteligentes, seguras y auditadas, utilizando IA para generación automática de contratos en Solidity y auditoría en tiempo real.
+**EagleDAC** is a modular Web3 platform that allows users to generate, audit, and deploy Decentralized Autonomous Companies (DACs) using AI. It combines Solidity contract generation, security auditing, and one-click deployment to the Metis blockchain.
 
-## 🚀 ¿Qué hace?
+---
 
-1. **Generación AI de contratos:** escribe el propósito de tu organización y EagleDAC genera un contrato personalizado en Solidity.
-2. **Auditoría en tiempo real:** el contrato generado se audita con IA + Slither, mostrando vulnerabilidades y recomendaciones.
-3. **Despliegue directo a blockchain:** desplega tu DAC en Metis desde el frontend usando wallet.
-4. **Gamificación:** valida auditorías, corrige vulnerabilidades y sube de nivel en la comunidad.
+## 🚀 Key Features
 
-## 🧱 Stack Tecnológico
+1. **AI DAC Generator**  
+   Generate a complete Solidity smart contract based on your organization’s purpose using AI prompts.
 
-- Frontend: React + Sass + Vite + wagmi + viem
-- Backend: Node.js + Express + Python + Foundry + Slither
-- Smart Contracts: Solidity
-- Chain: Metis Andromeda
-- LLMs: integración futura con Alith (Hyperion AI agents)
+2. **Real-Time Smart Contract Audit**  
+   Perform static security analysis of contracts using [Slither](https://github.com/crytic/slither), with instant results.
 
-## 🔥 MVP Status (Julio 2025)
+3. **One-Click Deploy**  
+   Deploy your DAC contract directly to the Metis Andromeda chain using wallet connection via `wagmi` and `viem`.
 
-✅ DAC Generator funcionando  
-✅ AI audit con Slither  
-✅ UI con modo oscuro/claro  
-✅ Deploy interactivo con wallet (en progreso)  
-✅ Estructura backend conectada  
-🚧 Alith + módulos de gobernanza en desarrollo
+4. **Gamified Experience (Coming Soon)**  
+   Track audit scores, fix vulnerabilities, and level up in the EagleDAC developer ecosystem.
 
-## 🧪 Cómo correr localmente
+---
+
+## 🧱 Tech Stack
+
+| Layer       | Technology                                        |
+| ----------- | ------------------------------------------------- |
+| Frontend    | React, Vite, TypeScript, Sass, Wagmi, Viem        |
+| Backend     | Node.js, Express, Python, Slither                 |
+| Contracts   | Solidity, Foundry                                 |
+| Blockchain  | Metis Andromeda                                   |
+| AI Auditing | Slither, future integration with Alith (Hyperion) |
+
+---
+
+## 📦 Local Setup
 
 ```bash
-# Clona el repo
+# Clone repository
 git clone https://github.com/IntiDev1/eagledac
 cd eagledac
 
-# Instalación FRONTEND
-cd frontend
+🖼️ Frontend Setup
+
+cd frontend/frontendEagledac
 npm install
 npm run dev
 
-# Instalación BACKEND
-cd ../backend
-npm install
-cp .env.example .env   # Añade tus claves RPC y PRIVATE_KEY
-node server.js         # O usa nodemon
+App will run at http://localhost:5173/
 
-# Audit Slither
+🧠 Backend Setup
+
+cd ../../backend
+npm install
+cp .env.example .env  # Add your RPC URL and PRIVATE_KEY
+node server.js        # Or use nodemon
+
+🔍 Run Slither Audit
+
 cd scripts
-./run_audit.sh         # Genera output JSON desde Slither
+./run_audit.sh  # Outputs audit results in JSON
+
+| Feature                             | Status      |
+| ----------------------------------- | ----------- |
+| ✅ AI DAC Contract Generator         | Completed   |
+| ✅ Slither Integration (Audit)       | Completed   |
+| ✅ Wallet Deployment (Metis)         | Completed   |
+| ⚙️ Real-time events via Hyperion    | In Progress |
+| 🚧 AI Assistant (LazAI / Alith)     | Coming Soon |
+| 🚧 Governance Modules (voting, etc) | Coming Soon |
+| 🎨 UI Polish and Sidebar            | Iterating   |
+
+🧪 Backend Foundry Usage
+
+# Compile contracts
+forge build
+
+# Run tests
+forge test
+
+# Format Solidity
+forge fmt
+
+# Launch local testnet
+anvil
+
+# Deploy contract via script
+forge script script/Counter.s.sol:CounterScript --rpc-url <RPC_URL> --private-key <PRIVATE_KEY>
+
+📂 API Endpoints (Express)
+
+POST /api/generate           → Generate contract via AI
+POST /api/audit/upload       → Audit uploaded contract code
+GET  /api/audit/:address     → Audit contract by address
+POST /api/deploy             → Deploy contract to Metis
+GET  /api/wallets/count      → Get registered wallet count
+GET  /api/deploys/count      → Get deployed DACs count
+
+
+🤝 Contributing
+
+We welcome contributions! Fork the repo, create a branch, and submit a PR. For suggestions or issues, open a GitHub Issue.
+
+📜 License
+MIT License © 2025 – EagleDAC Contributors
 ```

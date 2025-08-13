@@ -2,28 +2,41 @@
 import fs from "fs";
 import path from "path";
 import express from "express";
-import { sendEventToClients } from "./events.js"; // importar función SSE
+import { broadcastEvent } from "./events.js"; // importar función SSE
 
 const router = express.Router();
-const filePath = path.join(process.cwd(), "backend", "data", "dacCount.json");
+const counterFile = path.resolve("data", "dacCount.json");
 
-router.post("/dac-counter", (req, res) => {
+if (!fs.existsSync(counterFile)) {
+    fs.writeFileSync(counterFile, JSON.stringify({ count: 0 }, null, 2));
+}
+
+// GET: contador
+router.get("/dac-counter", (req, res) => {
     try {
-        let count = 0;
-        if (fs.existsSync(filePath)) {
-            const data = fs.readFileSync(filePath, "utf8");
-            count = JSON.parse(data).count || 0;
-        }
-
-        count += 1;
-        fs.writeFileSync(filePath, JSON.stringify({ count }));
-
-        // ✅ Emitir evento real-time usando SSE
-        sendEventToClients({ type: "dacDeploy", count });
-
+        const raw = fs.readFileSync(counterFile, "utf-8");
+        const { count } = JSON.parse(raw);
         res.json({ count });
-    } catch (err) {
-        res.status(500).json({ error: "Error updating counter" });
+    } catch {
+        res.json({ count: 0 });
+    }
+});
+
+// POST: incrementar contador + emitir SSE
+router.post("/dac-counter/increment", (req, res) => {
+    try {
+        const raw = fs.readFileSync(counterFile, "utf-8");
+        let { count } = JSON.parse(raw);
+        count += 1;
+        fs.writeFileSync(counterFile, JSON.stringify({ count }, null, 2));
+
+        // 🔊 Emite evento SSE para los clientes conectados
+        broadcastEvent("dacDeploy", { type: "dacDeploy", count });
+
+        res.json({ success: true, count });
+    } catch (e) {
+        console.error("Counter increment error:", e);
+        res.status(500).json({ success: false });
     }
 });
 

@@ -6,7 +6,7 @@ import "../styles/deploy.scss";
 function DacPanelPage() {
   return (
     <div className="page-container">
-      <h1 className="page-title">🚀 DAC Deployment Panel</h1>
+      <h1 className="page-title"> DAC Deployment Panel</h1>
       <p className="page-description">
         Deploy your generated DAC smart contract to the blockchain.
       </p>

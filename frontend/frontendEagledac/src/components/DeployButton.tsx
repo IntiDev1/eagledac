@@ -15,7 +15,7 @@ export function DeployButton() {
 
   return (
     <button onClick={handleDeploy} disabled={isLoading}>
-      {isLoading ? "Deploying..." : "🚀 Deploy DAC"}
+      {isLoading ? "Deploying..." : " Deploy DAC"}
     </button>
   );
 }

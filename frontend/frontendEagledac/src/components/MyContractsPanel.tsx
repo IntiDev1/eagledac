@@ -3,7 +3,7 @@ import { useContracts } from "../hooks/useContracts";
 import "../styles/contracts.scss";
 
 function MyContractsPanel() {
-  const { contracts } = useContracts(); // ✅ ya tenés los contratos desde context
+  const { contracts } = useContracts(); // ya tenés los contratos desde context
 
   return (
     <div className="contracts-panel">

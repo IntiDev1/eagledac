@@ -23,11 +23,11 @@ function MetricsPanel() {
       .catch((err) => console.error("Error fetching wallets:", err));
   }, []);
 
-  // 🔁 SSE tiempo real
+  //  SSE tiempo real
   useEffect(() => {
-    const eventSource = new EventSource("http://localhost:3001/events");
+    const eventSource = new EventSource("http://localhost:3001/api/events");
 
-    // 🛠️ Evento DAC desplegado
+    //  Evento DAC desplegado
     eventSource.addEventListener("dacDeploy", (event) => {
       try {
         const data = JSON.parse((event as MessageEvent).data);
@@ -38,7 +38,7 @@ function MetricsPanel() {
       }
     });
 
-    // 👛 Evento wallet registrada
+    //  Evento wallet registrada
     eventSource.addEventListener("walletRegistered", (event) => {
       try {
         const data = JSON.parse((event as MessageEvent).data);
@@ -68,7 +68,7 @@ function MetricsPanel() {
           <strong>{dacCount !== null ? dacCount : "Loading..."}</strong>
         </li>
         <li>
-          👛 Wallets Registered:{" "}
+          Wallets Registered:{" "}
           <strong>{walletCount !== null ? walletCount : "Loading..."}</strong>
         </li>
       </ul>

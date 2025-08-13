@@ -1,8 +1,6 @@
-// frontendEagledac/src/pages/DacCreatorPage.tsx
-
+// frontend/frontendEagledac/src/pages/DacCreatorPage.tsx
 import { useState } from "react";
 import "../styles/creator.scss";
-import { Agent } from "alith";
 
 function DacCreatorPage() {
   const [name, setName] = useState("");
@@ -11,42 +9,52 @@ function DacCreatorPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Generar con Alith vía tu backend
   const handleGenerate = async () => {
     setLoading(true);
     setError("");
 
     try {
-      const res = await fetch("http://localhost:3001/api/ai/generate", {
+      const prompt = `
+Generate a Solidity contract for a DAC (Decentralized Autonomous Company).
+Name: ${name}
+Purpose: ${purpose}
+Requirements:
+- SPDX-License-Identifier: MIT
+- Solidity ^0.8.20
+- Owner state, constructor, simple update function, and one event
+- Clean, readable, safe
+`;
+      const res = await fetch("http://localhost:3001/api/alith/generate-dac", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, purpose }),
+        body: JSON.stringify({ prompt }),
       });
 
-      const data = await res.json();
-
-      if (data.contractCode) {
-        setCode(data.contractCode);
-      } else {
-        setError("Error generating contract");
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || "Failed to generate contract");
       }
-    } catch {
-      setError("❌ Network error.");
+
+      const data = await res.json();
+      // tu backend responde { code: "..." }
+      if (data.code) {
+        setCode(data.code);
+      } else {
+        setError("No code returned from Alith.");
+      }
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Network or server error";
+      setError(`❌ ${msg}`);
     } finally {
       setLoading(false);
     }
   };
 
-  const agent = new Agent({
-    model: "gpt-4",
-    preamble: "Generate a Solidity contract based on the user's description",
-  });
-
-  const contract = await agent.prompt("Create a voting DAO with 3 proposals");
-
   return (
     <div className="contract-form">
-      <h1>🧠 DAC Creator</h1>
-      <p>Create your smart contract using natural language.</p>
+      <h1> DAC Creator</h1>
+      <p>Create your smart contract using natural language (Alith-powered).</p>
 
       <form
         onSubmit={(e) => {
@@ -62,15 +70,17 @@ function DacCreatorPage() {
           onChange={(e) => setName(e.target.value)}
           required
         />
+
         <textarea
           placeholder="Purpose of the DAC"
           value={purpose}
           onChange={(e) => setPurpose(e.target.value)}
           rows={4}
           required
-        ></textarea>
+        />
+
         <button type="submit" disabled={loading}>
-          {loading ? "Generating..." : "⚙️ Generate Contract"}
+          {loading ? "Generating with Alith..." : "⚙️ Generate Contract"}
         </button>
       </form>
 

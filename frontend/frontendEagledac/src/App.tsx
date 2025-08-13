@@ -8,6 +8,7 @@ import { DeployButton } from "./components/DeployButton";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
+import AlithAssistant from "./components/AlithAssistant";
 
 import Dashboard from "./pages/Dashboard";
 import AuditPanelPage from "./pages/AuditPanelPage";
@@ -50,6 +51,7 @@ function App() {
       <Header />
 
       <main className="main-content">
+        <AlithAssistant />
         <DeployButton />
         <div className="page-content">
           <Routes>

@@ -17,7 +17,7 @@ function WalletDropdown() {
     ) as HTMLElement | null;
 
     if (button) {
-      button.click(); // ✅ ahora está permitido por TypeScript
+      button.click(); //  ahora está permitido por TypeScript
     } else {
       console.warn("Connect button not found");
     }

@@ -9,6 +9,7 @@ import MetricsPanel from "../components/MetricsPanel";
 import { registerWallet } from "../utils/api";
 import { useAccount } from "wagmi";
 import MainLayout from "../layouts/MainLayout";
+import logo from "../assets/eagleDAC-1.png";
 //import { ConnectButton } from "@rainbow-me/rainbowkit"; // Si usas RainbowKit, puedes cambiar esto según tu lib de conexión
 
 function Dashboard() {
@@ -20,7 +21,7 @@ function Dashboard() {
     setDeployedCount(contracts.length);
   }, [contracts]);
 
-  // 🔁 Registrar wallet al conectar
+  //  Registrar wallet al conectar
   useEffect(() => {
     if (isConnected && address) {
       registerWallet(address).then((success) => {
@@ -37,7 +38,8 @@ function Dashboard() {
     <MainLayout>
       <div className="dashboard">
         <div className="dashboard-header">
-          <h1>🦅 EagleDAC Dashboard</h1>
+          <img src={logo} alt="EagleDAC" className="hero-logo" />
+          <h1> EagleDAC Dashboard</h1>
         </div>
         <p className="subtitle">
           Select a module to begin working with your DAC
@@ -45,24 +47,24 @@ function Dashboard() {
 
         <div className="card-grid">
           <Link to="/creator" className="card">
-            <h2>🧠 DAC Creator</h2>
+            <h2> DAC Creator</h2>
             <p>Create smart contracts using natural language and AI.</p>
           </Link>
 
           <Link to="/audit" className="card">
-            <h2>🔍 EagleAudit</h2>
+            <h2> EagleAudit</h2>
             <p>
               Run automatic audits on your contracts using LLMs and Slither.
             </p>
           </Link>
 
           <Link to="/deploy" className="card">
-            <h2>🚀 Deploy & Panel</h2>
+            <h2> Deploy & Panel</h2>
             <p>Preview, deploy and interact with your DAC smart contracts.</p>
           </Link>
 
           <div className="card card-stats">
-            <h2>📈 Deployed DACs</h2>
+            <h2> Deployed DACs</h2>
             <p>Total: {deployedCount}</p>
           </div>
         </div>

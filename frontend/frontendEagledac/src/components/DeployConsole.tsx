@@ -18,11 +18,12 @@ function DeployConsole() {
   const { data: walletClient } = useWalletClient();
   const { address } = useAccount();
 
+  //  helper para traer contador desde backend (GET /api/dac-counter)
   const fetchCount = async () => {
     try {
-      const res = await fetch("http://localhost:3001/api/dac-count");
+      const res = await fetch("http://localhost:3001/api/dac-counter");
       const data = await res.json();
-      setDacCount(data.count);
+      setDacCount(Number(data?.count || 0));
     } catch (error) {
       console.error("❌ Error fetching DAC count:", error);
     }
@@ -36,8 +37,9 @@ function DeployConsole() {
 
     try {
       setDeploying(true);
-      setLogs(["🚀 Starting deployment..."]);
+      setLogs(["🛠 Starting deployment..."]);
 
+      //  Deploy via viem/wagmi
       const hash = await walletClient.deployContract({
         abi,
         bytecode,
@@ -48,27 +50,27 @@ function DeployConsole() {
       setLogs((prev) => [...prev, `📡 Tx Hash: ${hash}`]);
       setTxHash(hash);
 
-      // Incrementar contador
-      await fetch("http://localhost:3001/api/dac-count/increment", {
+      //  incrementa contador (POST /api/dac-counter/increment)
+      fetch("http://localhost:3001/api/dac-counter/increment", {
         method: "POST",
-      });
+      }).catch((e) => console.warn("counter increment failed", e));
 
-      await fetchCount(); // refrescar número
+      // refresca número
+      await fetchCount();
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        setLogs((prev) => [...prev, `❌ Error: ${err.message}`]);
-      } else {
-        setLogs((prev) => [...prev, "❌ Unknown error"]);
-      }
+      const msg = err instanceof Error ? err.message : String(err);
+      setLogs((prev) => [...prev, `❌ Error: ${msg}`]);
     } finally {
       setDeploying(false);
     }
   };
 
+  // carga contador al entrar
   useEffect(() => {
     fetchCount();
   }, []);
 
+  // autoscroll del “terminal”
   useEffect(() => {
     const el = consoleRef.current;
     if (el) el.scrollTop = el.scrollHeight;
@@ -76,11 +78,11 @@ function DeployConsole() {
 
   return (
     <div className="deploy-console">
-      <h2>🚀 Deploy Smart Contract</h2>
+      <h2> Deploy Smart Contract</h2>
       <WalletConnector />
 
       <p className="counter-display">
-        🧮 Total DACs deployed: <strong>{dacCount}</strong>
+        Total DACs deployed: <strong>{dacCount}</strong>
       </p>
 
       <button onClick={handleDeploy} disabled={deploying}>
@@ -89,7 +91,7 @@ function DeployConsole() {
             <span className="spinner" /> Deploying...
           </>
         ) : (
-          "🚀 Deploy DAC"
+          " Deploy DAC"
         )}
       </button>
 
@@ -112,7 +114,7 @@ function DeployConsole() {
 
       {txHash && (
         <div className="deploy-success">
-          <p>✅ Deployed to:</p>
+          <p> Deployed to:</p>
           <a
             href={`https://andromeda-explorer.metis.io/tx/${txHash}`}
             target="_blank"

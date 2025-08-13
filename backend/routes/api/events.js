@@ -8,7 +8,7 @@ const router = express.Router();
 const clients = [];
 
 // Ruta de suscripción SSE
-router.get("/events", (req, res) => {
+router.get("/", (req, res) => {
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
@@ -28,6 +28,11 @@ export function broadcastEvent(eventName, data) {
     const payload = `event: ${eventName}\ndata: ${JSON.stringify(data)}\n\n`;
     clients.forEach((res) => res.write(payload));
 }
+
+// 🔁 Alias para compatibilidad con imports antiguos
+//export const sendEventToClients = (eventName, data) =>
+//    broadcastEvent(eventName, data);
+// Función para emitir eventos a todos los clientes conectados
 
 // Exportar el router
 export default router;

@@ -26,6 +26,18 @@
     margin: 0 auto;
   }
 
+  .header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
   .branding {
     display: flex;
     align-items: center;
@@ -34,6 +46,7 @@
     
     .logo {
       height: 36px;
+      width: auto;
       transition: transform 0.3s ease;
       
       &:hover {

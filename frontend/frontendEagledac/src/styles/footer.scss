@@ -6,6 +6,7 @@
     color: var(--text-subtle);
     font-size: 0.9rem;
     z-index: 99;
+    margin-left: var(--sidebar-width);
     
     .footer-content {
       max-width: 1400px;
@@ -25,6 +26,9 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
+      }
+      @media (max-width: 992px) {
+        margin-left: 0;
       }
     }
     

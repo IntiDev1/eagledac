@@ -11,7 +11,7 @@ function ContractPreview() {
   useEffect(() => {
     const fetchContract = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/ai/contract");
+        const res = await fetch("http://localhost:3001/api/alith/contract");
         const data = await res.json();
         if (data.code) {
           setContractCode(data.code);
@@ -21,7 +21,7 @@ function ContractPreview() {
       } catch {
         setError("Error fetching contract from server.");
       } finally {
-        setLoading(false); // ✅ stop loading
+        setLoading(false); //  stop loading
       }
     };
 

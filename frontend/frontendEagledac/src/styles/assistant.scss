@@ -1,0 +1,88 @@
+.alith-fab {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 14px;
+    background: var(--accent-color);
+    color: #fff;
+    box-shadow: var(--shadow);
+}
+
+.alith-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.alith-card {
+    width: min(640px, 92vw);
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+}
+
+.alith-header,
+.alith-footer {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.alith-body {
+    padding: 12px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 220px;
+}
+
+.msg.user {
+    align-self: flex-end;
+    background: var(--active-bg);
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+.msg.ai {
+    align-self: flex-start;
+    background: var(--hover-bg);
+    padding: 8px 10px;
+    border-radius: 10px;
+    white-space: pre-wrap;
+}
+
+.hint {
+    opacity: .7;
+    font-size: .9rem;
+}
+
+.alith-footer input {
+    flex: 1;
+    margin-right: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-color);
+}
+
+.alith-footer button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent-color);
+    color: #fff;
+}

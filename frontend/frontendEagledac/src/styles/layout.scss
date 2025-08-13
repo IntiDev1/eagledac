@@ -34,3 +34,16 @@
         color: #ccc;
     }
 }
+:root {
+    --sidebar-width: 220px;
+}
+
+.app-content {
+    padding-left: var(--sidebar-width);
+}
+
+@media (max-width: 992px) {
+    .app-content {
+        padding-left: 0;
+    }
+}
