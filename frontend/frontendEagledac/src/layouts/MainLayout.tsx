@@ -11,7 +11,7 @@ function MainLayout({ children }: Props) {
   return (
     <div className="layout">
       <header className="layout-header">
-        <h1 className="logo">🦅 EagleDAC</h1>
+        <h1 className="logo"> EagleDAC</h1>
         <WalletDropdown />
       </header>
 

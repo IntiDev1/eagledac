@@ -7,7 +7,7 @@
 @use "./base.scss";
 
 // Importar componentes
-//@use "./layout.scss";
+@use "./layout.scss";
 @use "./header.scss";
 @use "./sidebar.scss";
 @use "./footer.scss";

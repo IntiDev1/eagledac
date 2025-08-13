@@ -3,7 +3,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
-import { DeployButton } from "./components/DeployButton";
 
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -52,7 +51,7 @@ function App() {
 
       <main className="main-content">
         <AlithAssistant />
-        <DeployButton />
+
         <div className="page-content">
           <Routes>
             <Route path="/" element={<Dashboard />} />

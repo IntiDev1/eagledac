@@ -10,8 +10,8 @@
         justify-content: space-between;
         align-items: center;
         padding: 1rem 2rem;
-        background: linear-gradient(90deg, #0a0f1c, #1c2333);
-        color: #fff;
+        background: var(--header-bg);
+        color: var(--header-color);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
@@ -23,15 +23,15 @@
     .layout-main {
         flex: 1;
         padding: 2rem;
-        background: #f4f6fa;
-        color: #333;
+        background: var(--bg-color);
+        color: var(--text-color);
     }
 
     .layout-footer {
         padding: 1rem;
         text-align: center;
-        background: #0a0f1c;
-        color: #ccc;
+        background: var(--header-bg);
+        color: var(--header-color);
     }
 }
 :root {
