@@ -12,7 +12,7 @@ const API_KEY = process.env.ALITH_API_KEY || "TU_API_KEY";
 
 //  Archivo donde persistimos el último contrato generado
 // (ruta absoluta, segura para procesos lanzados desde la raíz del repo)
-const lastContractFile = path.resolve("backend/data/lastContract.json");
+const lastContractFile = path.resolve("data/lastContract.json");
 
 // Utilidad segura de escritura
 function writeLastContract(code) {

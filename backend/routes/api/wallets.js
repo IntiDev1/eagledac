@@ -3,7 +3,7 @@
 import express from "express";
 import fs from "fs";
 import path from "path";
-import { broadcastEvent } from "./events.js"; // ✅ importar del mismo folder y nombre correcto
+import { broadcastEvent } from "./events.js"; //  importar del mismo folder y nombre correcto
 
 const router = express.Router();
 
