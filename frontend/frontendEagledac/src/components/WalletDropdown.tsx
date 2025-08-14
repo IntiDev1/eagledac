@@ -1,32 +1,31 @@
 // frontend/frontendEagledac/src/components/WalletDropdown.tsx
 
 import { useState } from "react";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
 import "../styles/wallet.scss";
 
 function WalletDropdown() {
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
-  const [open, setOpen] = useState(false);
+  const { connect, connectors, isPending } = useConnect();
 
+  const [open, setOpen] = useState(false);
   const toggleDropdown = () => setOpen(!open);
 
-  const handleConnectClick = () => {
-    const button = document.querySelector(
-      "button[data-testid='rk-connect-button']"
-    ) as HTMLElement | null;
+  const injectedConnector = connectors.find((c) => c.id === "injected");
 
-    if (button) {
-      button.click(); //  ahora está permitido por TypeScript
+  const handleConnectClick = () => {
+    if (injectedConnector) {
+      connect({ connector: injectedConnector });
     } else {
-      console.warn("Connect button not found");
+      alert("No wallet found. Please install MetaMask or similar.");
     }
   };
 
   return (
     <div className="wallet-dropdown">
       <button onClick={toggleDropdown}>
-        {typeof address === "string"
+        {isConnected && address
           ? `${address.slice(0, 6)}...${address.slice(-4)}`
           : "Connect Wallet"}
       </button>
@@ -36,7 +35,9 @@ function WalletDropdown() {
           {isConnected ? (
             <button onClick={() => disconnect()}>Log out</button>
           ) : (
-            <button onClick={handleConnectClick}>Connect</button>
+            <button onClick={handleConnectClick} disabled={isPending}>
+              {isPending ? "Connecting..." : "Connect"}
+            </button>
           )}
         </div>
       )}

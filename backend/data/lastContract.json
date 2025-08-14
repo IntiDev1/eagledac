@@ -1,1 +1,3 @@
-{ "code": "" }
+{
+  "code": "// Fallback: demo contract\n// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\ncontract DemoDAC {\n  address public owner;\n  event Ping(address indexed from);\n  constructor() { owner = msg.sender; }\n  function ping() external { emit Ping(msg.sender); }\n}"
+}
