@@ -39,6 +39,8 @@ function DeployConsole() {
       setDeploying(true);
       setLogs(["🛠 Starting deployment..."]);
 
+      console.log("Wallet Client:", walletClient); //Prueva walletClient
+
       //  Deploy via viem/wagmi
       const hash = await walletClient.deployContract({
         abi,
@@ -58,11 +60,17 @@ function DeployConsole() {
       // refresca número
       await fetchCount();
     } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : JSON.stringify(err);
+      console.error("Deploy error:", err); // nuevo log
+      setLogs((prev) => [...prev, `❌ Error: ${msg}`]);
+    }
+
+    /*} catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       setLogs((prev) => [...prev, `❌ Error: ${msg}`]);
     } finally {
       setDeploying(false);
-    }
+    }*/
   };
 
   // carga contador al entrar
