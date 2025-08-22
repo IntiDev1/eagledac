@@ -1,10 +1,15 @@
 {
-    "rewrites": [
+    "builds": [
       {
-        "source": "/(.*)",
-        "destination": "/index.html"
+        "src": "frontend/frontendEagledac/index.html",
+        "use": "@vercel/static"
       }
     ],
-    "cleanUrls": true,
-    "trailingSlash": false
-}
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "frontend/frontendEagledac/dist/$1"
+      }
+    ]
+  }
+  
